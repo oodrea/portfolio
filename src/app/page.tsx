@@ -27,7 +27,6 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-white text-black">
       <div className="mx-auto max-w-4xl px-6 py-12">
-        {/* HERO */}
         <header className="space-y-4">
           <h1 className="text-3xl font-bold">{profile.name}</h1>
           <p className="text-lg">{profile.title}</p>
@@ -57,7 +56,6 @@ export default function Page() {
           </div>
         </header>
 
-        {/* PROJECTS */}
         <Section title="Projects">
           <div className="grid gap-5">
             {projects.map((p) => (
@@ -92,7 +90,6 @@ export default function Page() {
           </div>
         </Section>
 
-        {/* SKILLS */}
         <Section title="Skills">
           <div className="flex flex-wrap gap-2">
             {[
@@ -102,8 +99,8 @@ export default function Page() {
               "Object Detection",
               "OpenCV",
               "Model Optimization",
-              "AWS (basic)",
-              "SQL (basic)",
+              "AWS",
+              "SQL",
               "Git",
             ].map((s) => (
               <Pill key={s} text={s} />
@@ -111,19 +108,16 @@ export default function Page() {
           </div>
         </Section>
 
-        {/* ABOUT */}
         <Section title="About">
           <p className="text-neutral-800">
-            I’m interested in building efficient vision systems that work under real constraints
-            (latency, accuracy, compute). I enjoy turning research ideas into clean, testable code
-            and analyzing model errors to improve performance.
+            I focus on building efficient vision systems that balance accuracy, latency, and compute.
+            I enjoy turning research ideas into clean, testable code and analyzing model errors to improve performance.
           </p>
         </Section>
 
-        {/* CONTACT */}
         <Section title="Contact">
           <p className="text-neutral-800">
-            Best way to reach me:{" "}
+            Email me at{" "}
             <a className="underline" href={`mailto:${profile.links.email}`}>
               {profile.links.email}
             </a>
