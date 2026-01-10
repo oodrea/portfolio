@@ -1,4 +1,4 @@
-import { profile, projects } from "@/data/portfolio";
+import { profile, projects } from "../data/portfolio";
 
 function Pill({ text }: { text: string }) {
   return (
