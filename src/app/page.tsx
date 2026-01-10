@@ -2,7 +2,7 @@ import { profile, projects } from "../data/portfolio";
 
 function Pill({ text }: { text: string }) {
   return (
-    <span className="rounded-full border px-3 py-1 text-sm">
+    <span className="rounded-full border border-neutral-300 bg-white px-3 py-1 text-xs font-medium text-neutral-700">
       {text}
     </span>
   );
@@ -16,8 +16,8 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="py-10">
-      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+    <section className="py-14">
+      <h2 className="mb-6 text-2xl font-semibold tracking-tight">{title}</h2>
       {children}
     </section>
   );
@@ -25,48 +25,66 @@ function Section({
 
 export default function Page() {
   return (
-    <main className="min-h-screen bg-white text-black">
-      <div className="mx-auto max-w-4xl px-6 py-12">
-        <header className="space-y-4">
-          <h1 className="text-3xl font-bold">{profile.name}</h1>
-          <p className="text-lg">{profile.title}</p>
-          <p className="text-sm text-neutral-600">{profile.location}</p>
+    <main className="min-h-screen bg-neutral-50 text-neutral-900">
+      <div className="mx-auto max-w-5xl px-6 py-16">
 
-          <div className="flex flex-wrap gap-3 pt-2">
-            <a className="underline" href={`mailto:${profile.links.email}`}>
-              Email
-            </a>
-            <a className="underline" href={profile.links.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-            <a className="underline" href={profile.links.github} target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <a className="underline" href={profile.links.resume} target="_blank" rel="noreferrer">
-              Resume
-            </a>
+        {/* HEADER */}
+        <header className="space-y-6">
+          <div className="space-y-2">
+            <h1 className="text-4xl font-bold tracking-tight">{profile.name}</h1>
+            <p className="text-xl text-neutral-700">{profile.title}</p>
+            <p className="text-sm text-neutral-500">{profile.location}</p>
           </div>
 
-          <div className="pt-4 space-y-2">
+          <div className="flex flex-wrap gap-3">
+            {[
+              { label: "Email", href: `mailto:${profile.links.email}` },
+              { label: "LinkedIn", href: profile.links.linkedin },
+              { label: "GitHub", href: profile.links.github },
+              { label: "Resume", href: profile.links.resume },
+            ].map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-lg border bg-white px-4 py-2 text-sm shadow-sm transition hover:bg-neutral-100"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="space-y-3 max-w-3xl">
             {profile.summary.map((line) => (
-              <p key={line} className="text-neutral-800">
+              <p key={line} className="text-neutral-700 leading-relaxed">
                 {line}
               </p>
             ))}
           </div>
         </header>
 
+        {/* PROJECTS */}
         <Section title="Projects">
-          <div className="grid gap-5">
+          <div className="grid gap-6 md:grid-cols-2">
             {projects.map((p) => (
-              <div key={p.name} className="rounded-2xl border p-5 shadow-sm">
+              <div
+                key={p.name}
+                className="rounded-2xl bg-white p-6 shadow-md transition hover:shadow-lg"
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-lg font-semibold">{p.name}</h3>
-                    <p className="text-neutral-700 mt-1">{p.description}</p>
+                    <p className="mt-2 text-neutral-700">{p.description}</p>
                   </div>
+
                   {p.link && (
-                    <a className="underline shrink-0" href={p.link} target="_blank" rel="noreferrer">
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="shrink-0 text-sm underline text-neutral-600 hover:text-neutral-900"
+                    >
                       Link
                     </a>
                   )}
@@ -78,9 +96,12 @@ export default function Page() {
                   ))}
                 </div>
 
-                <div className="mt-3 flex flex-wrap gap-2 text-sm text-neutral-700">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {p.tech.map((t) => (
-                    <span key={t} className="rounded-md bg-neutral-100 px-2 py-1">
+                    <span
+                      key={t}
+                      className="rounded-full bg-neutral-100 px-3 py-1 text-xs text-neutral-700"
+                    >
                       {t}
                     </span>
                   ))}
@@ -90,8 +111,9 @@ export default function Page() {
           </div>
         </Section>
 
+        {/* SKILLS */}
         <Section title="Skills">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-3">
             {[
               "Python",
               "PyTorch",
@@ -108,23 +130,26 @@ export default function Page() {
           </div>
         </Section>
 
+        {/* ABOUT */}
         <Section title="About">
-          <p className="text-neutral-800">
+          <p className="max-w-3xl text-neutral-700 leading-relaxed">
             I focus on building efficient vision systems that balance accuracy, latency, and compute.
-            I enjoy turning research ideas into clean, testable code and analyzing model errors to improve performance.
+            I enjoy turning research ideas into clean, testable code and analyzing model errors to
+            improve real-world performance.
           </p>
         </Section>
 
+        {/* CONTACT */}
         <Section title="Contact">
-          <p className="text-neutral-800">
-            Email me at{" "}
+          <p className="text-neutral-700">
+            You can reach me at{" "}
             <a className="underline" href={`mailto:${profile.links.email}`}>
               {profile.links.email}
             </a>
           </p>
         </Section>
 
-        <footer className="py-10 text-sm text-neutral-500">
+        <footer className="pt-16 text-sm text-neutral-400">
           © {new Date().getFullYear()} {profile.name}
         </footer>
       </div>
