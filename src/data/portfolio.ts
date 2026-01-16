@@ -6,7 +6,7 @@ export const profile = {
     email: "rjaemi@gmail.com",
     linkedin: "https://linkedin.com/in/audrea-tabadero",
     github: "https://github.com/oodrea",
-    resume: "/resume_latest.pdf",
+    resume: "/TABADERO_resume.pdf",
   },
   about: `I’m a Computer Science student graduating in February 2026, and over time I’ve developed a strong interest in computer vision and efficient deep learning. 
           I’ve explored a lot of different areas in school, but I keep coming back to vision projects, especially object detection. 
