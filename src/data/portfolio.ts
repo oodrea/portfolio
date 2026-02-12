@@ -1,6 +1,6 @@
 export const profile = {
   name: "Audrea Arjaemi T. Tabadero",
-  title: "Aspiring Computer Vision / ML Engineer",
+  title: "CV and ML Enthusiast",
   location: "Manila, Philippines",
   links: {
     email: "rjaemi@gmail.com",
